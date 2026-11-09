@@ -4,6 +4,9 @@
 // SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+// clang-cl 23 sees the 12/16-byte pointer records as trivially comparable and the MSVC 14.51 STL has no
+// vectorized find for that size (static_assert "unexpected size").
+#define _USE_STD_VECTOR_ALGORITHMS 0
 #include <algorithm>
 #include <array>
 #include <bit>
